@@ -15,10 +15,63 @@ const { NotImplementedError } = require('../extensions/index.js');
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
-function repeater(/* str, options */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function repeater(str, options) {
+  let myWord = str;
+  let patterns = '';
+  let phrase = [];
+  if (options.addition || options.addition === false || typeof options.addition === 'object') {
+    if (options.addition === 'object') options.addition = String(options.addition)
+    if (options.additionRepeatTimes && typeof options.additionRepeatTimes === "number") {
+      for (let i = 0; i < options.additionRepeatTimes; i++) {
+        patterns += options.addition;
+        if (options.additionSeparator && typeof options.additionRepeatTimes === "number" && i !== options.additionRepeatTimes - 1) {
+          patterns += options.additionSeparator
+        }
+      }
+      myWord += patterns;
+    }
+    if (!options.additionRepeatTimes && !options.repeatTimes) {
+
+      patterns += options.addition;
+      myWord += patterns;
+      return myWord;
+    }
+    if (!options.additionRepeatTimes && options.repeatTimes) {
+      patterns += options.addition;
+      myWord += patterns;
+      for (let i = 0; i < options.repeatTimes; i++) {
+        phrase.push(myWord)
+      }
+      return phrase.join('+')
+    }
+    if (options.repeatTimes && typeof options.repeatTimes === "number") {
+      for (let i = 0; i < options.repeatTimes; i++) {
+        if (options.separator) {
+          phrase.push(myWord)
+        }
+      }
+      phrase = phrase.join(options.separator)
+    }
+  }
+  else {
+    if (options.repeatTimes && typeof options.repeatTimes === "number") {
+      for (let i = 0; i < options.repeatTimes; i++) {
+        phrase.push(myWord)
+      }
+    }
+    if (options.separator) {
+      phrase = phrase.join(options.separator)
+    }
+    else {
+      phrase = phrase.join('+')
+    }
+
+  }
+
+
+  return phrase;
 }
+
 
 module.exports = {
   repeater
