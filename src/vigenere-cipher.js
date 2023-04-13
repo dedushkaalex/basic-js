@@ -58,7 +58,7 @@ class VigenereCipheringMachine {
   }
   encrypt(string, key) {
     let result;
-    if (!string || !key) throw new NotImplementedError('Incorrect arguments!');
+    if (!string && !key || typeof string === "undefined" || typeof key === "undefined") throw new Error('Incorrect arguments!');
     if (this.isDirect === false) {
       string = string.split('').reverse().join('');
     }
@@ -231,7 +231,7 @@ class VigenereCipheringMachine {
     let result;
     this.modKey = undefined;
     this.modString = undefined;
-    if (!string || !key) throw new NotImplementedError('Incorrect arguments!');
+    if (!string && !key || typeof string === "undefined" || typeof key === "undefined") throw new Error('Incorrect arguments!');
     if (this.isDirect === false) {
       string = string.split('').reverse().join('');
     }
