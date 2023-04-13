@@ -14,9 +14,9 @@ const chainMaker = {
     return this;
   },
   removeLink(x) {
-
-    if (x - 1 === 0 || x === 0 || typeof x !== 'number' || x < 0 || this.chain.length < x) {
-      throw new NotImplementedError('You can\'t remove incorrect link!')
+    if (typeof x !== 'number' || x < 1 || x > this.chain.length) {
+      this.chain = [];
+      throw new Error('You can\'t remove incorrect link!');
     } else {
       this.chain.splice(x - 1, 1);
       return this;
