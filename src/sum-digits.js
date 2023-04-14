@@ -12,15 +12,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getMatrixElementsSum(matrix) {
-  let sum = 0;
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-      if (i === 0) sum += matrix[i][j];
-      else if (matrix[i - 1][j - 1] !== 0) sum += matrix[i][j];
-    }
-  }
-  return sum;
+function getSumOfDigits(/* n */) {
+  throw new NotImplementedError('Not implemented');
+  // remove line with error and write your code here
 }
 
 module.exports = {
