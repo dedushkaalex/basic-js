@@ -31,7 +31,6 @@ const chainMaker = {
     for (let i of this.chain) {
       s += "(" + " " + i + " " + ")" + "~~";
     }
-    console.debug(this.chain)
     this.chain = [];
     return s.slice(0, -2);
   }
