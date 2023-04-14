@@ -12,6 +12,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
+  // console.debug(Object.getPrototypeOf(date))
   if (date) {
     const season = {
       'spring': ['March', 'April', 'May'],
@@ -30,7 +31,7 @@ function getSeason(date) {
       }
     }
     catch {
-      throw new NotImplementedError('Invalid date');
+      throw new Error('Invalid date!');
     }
 
   }
